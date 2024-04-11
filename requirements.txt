@@ -1,0 +1,6 @@
+pytest~=8.1.1
+selene~=2.0.0rc8
+allure-pytest~=2.13.4
+python-dotenv==1.0.1
+requests==2.31.0
+selenium~=4.19.0
