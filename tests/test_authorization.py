@@ -18,6 +18,9 @@ login_form = LoginForm()
 @allure.title('Проверяем авторизацию пользователя')
 def test_login():
     main_page.open_main_page()
+    login_form.log_in()
+    login_form.fill_user()
+    login_form.should_wrong_message()
 
 
 

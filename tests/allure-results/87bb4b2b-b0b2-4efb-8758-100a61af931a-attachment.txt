@@ -1,0 +1,10 @@
+{'level': 'WARNING', 'message': 'https://travel.yandex.ru/ - Third-party cookie will be blocked. Learn more in the Issues tab.', 'source': 'other', 'timestamp': 1712937485533}
+{'level': 'WARNING', 'message': 'https://travel.yandex.ru/ - Third-party cookie will be blocked. Learn more in the Issues tab.', 'source': 'other', 'timestamp': 1712937485533}
+{'level': 'WARNING', 'message': 'https://travel.yandex.ru/ - Third-party cookie will be blocked. Learn more in the Issues tab.', 'source': 'other', 'timestamp': 1712937485533}
+{'level': 'WARNING', 'message': 'https://travel.yandex.ru/ - Third-party cookie will be blocked. Learn more in the Issues tab.', 'source': 'other', 'timestamp': 1712937485533}
+{'level': 'WARNING', 'message': 'https://travel.yandex.ru/ - Third-party cookie will be blocked. Learn more in the Issues tab.', 'source': 'other', 'timestamp': 1712937485533}
+{'level': 'WARNING', 'message': 'https://travel.yandex.ru/ - Third-party cookie will be blocked. Learn more in the Issues tab.', 'source': 'other', 'timestamp': 1712937485617}
+{'level': 'WARNING', 'message': 'https://travel.yandex.ru/ - Third-party cookie will be blocked. Learn more in the Issues tab.', 'source': 'other', 'timestamp': 1712937485678}
+{'level': 'WARNING', 'message': 'https://travel.yandex.ru/ - Third-party cookie will be blocked. Learn more in the Issues tab.', 'source': 'other', 'timestamp': 1712937485678}
+{'level': 'WARNING', 'message': 'https://travel.yandex.ru/ - Third-party cookie will be blocked. Learn more in the Issues tab.', 'source': 'other', 'timestamp': 1712937486051}
+{'level': 'WARNING', 'message': 'https://travel.yandex.ru/ - Third-party cookie will be blocked. Learn more in the Issues tab.', 'source': 'other', 'timestamp': 1712937486051}
