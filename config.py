@@ -1,18 +1,16 @@
-import os
-
-from dotenv import load_dotenv
+from pydantic_settings import BaseSettings
 from typing import Literal
 
-load_dotenv()
 
-EnvType = Literal['local', 'remote']
-ENVIRONMENT: EnvType = 'local'
+class Config(BaseSettings):
+    selenoid_login: str = ''
+    selenoid_password: str = ''
+    browser_version: str = ''
+    test_site_lang: str = 'ru'
+    base_url: str = 'https://travel.yandex.ru/'
+    envtype: Literal['local', 'remote'] = 'local'
+    driver_remote_url: str = ''
 
-USER_LOGIN = os.getenv('login')
-USER_PASSWORD = os.getenv('password')
-
-SELENOID_LOGIN = os.getenv('selenoid_login')
-SELENOID_PASSWORD = os.getenv('selenoid_password')
 
 
 

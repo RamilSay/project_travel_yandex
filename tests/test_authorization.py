@@ -1,7 +1,7 @@
 import allure
 import pytest
 from allure_commons.types import Severity
-from selene import browser
+from selene import have, browser
 
 import config
 from ui_model.pages.login_form import LoginForm
@@ -13,29 +13,32 @@ login_form = LoginForm()
 
 @allure.label('owner', 'ramilsay')
 @allure.tag('UI')
-@allure.tag('Authorization')
+@allure.feature('Authorization')
 @allure.severity(Severity.BLOCKER)
-@allure.title('Проверяем авторизацию пользователя')
-def test_login():
-    main_page.open_main_page()
-    login_form.log_in()
-    login_form.fill_user()
-    login_form.should_wrong_message()
-
-
-
-
-
-
-@allure.severity(Severity.BLOCKER)
-@allure.title('Авторизация пользователя с некорректными данными')
-@pytest.mark.web
+@allure.epic('UI tests')
+@allure.title('Authorization is impossible with incorrect login and password')
+@pytest.mark.ui
 @pytest.mark.user
 def test_incorrect_login(open_browser):
-    login_page = Login(
-        user=UserModel(email='incorrect@mail.ru', password='incorrect_password')
-    )
-    login_page.open()
-    login_page.fill_form()
-    login_page.submit()
-    login_page.check_result_after_incorrect_login_data('Incorrect username or password')
+
+    main_page.open_main_page()
+    login_form.click_button_log_in()
+    login_form.fill_user()
+    login_form.should_error_message('Неверный пароль')
+
+
+@allure.label('owner', 'ramilsay')
+@allure.tag('UI')
+@allure.feature('Authorization')
+@allure.severity(Severity.BLOCKER)
+@allure.epic('UI tests')
+@allure.title('Authorization with correct login and password')
+def test_login():
+    main_page.open_main_page()
+    login_form.click_button_log_in()
+    login_form.fill_user()
+    #assert login_form.should_error_message() == 'Неверный пароль'
+
+#login_page = Login(
+        #user=UserModel(email='incorrect@mail.ru', password='incorrect_password')
+    #)

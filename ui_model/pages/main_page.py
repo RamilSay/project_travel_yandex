@@ -9,7 +9,7 @@ class MainPage:
 
     @allure.step('Проверяем кликабельность кнопки Войти')
     def clickable_log_in(self):
-        browser.element('.tm-header-user-menu__login').should(be.clickable)
+        browser.element('._44BiE').should(be.clickable)
 
     @allure.step('Проверяем лейбл Хабр')
     def should_label_be_clickable_and_have_text(self):
