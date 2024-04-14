@@ -11,9 +11,9 @@ class MainPage:
     def clickable_log_in(self):
         browser.element('.WvMZr').should(be.clickable)
 
-    @allure.step('Проверяем лейбл Путешествия')
-    def should_label_be_clickable_and_have_text(self):
-        browser.element('/a').should(be.visible).should(have.text('Перейти на главную Яндекс Путешествий')).click()
+    @allure.step('Check label main menu')
+    def should_label_main_menu_be_clickable(self):
+        browser.element('.hE6MR').should(be.visible).click()
 
     @allure.step('Проверяем верхнее меню')
     def should_main_menu_titles(self):
