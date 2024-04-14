@@ -26,8 +26,8 @@ def browser_management(request):
     browser_version = request.config.getoption('--browser_version')
     browser.config.window_width = 1920
     browser.config.window_height = 1080
-    #options = webdriver.ChromeOptions()
-    #browser.config.driver_options = options
+    options = webdriver.ChromeOptions()
+    browser.config.driver_options = options
 
     options = Options()
     selenoid_capabilities = {

@@ -21,7 +21,7 @@ main_page = MainPage()
 @allure.title('Authorization is impossible with incorrect login and password')
 @pytest.mark.ui
 @pytest.mark.user
-def test_incorrect_login(browser_management):
+def test_incorrect_login():
     page = LoginForm(user=User('', ''))
     main_page.open_main_page()
     page.click_button_log_in()

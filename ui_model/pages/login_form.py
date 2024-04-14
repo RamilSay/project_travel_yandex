@@ -1,6 +1,6 @@
 import allure
 import config
-from selene import by, have, browser
+from selene import be, by, have, browser
 
 from data.user import User
 
@@ -16,7 +16,6 @@ class LoginForm:
     def click_button_log_in(self):
         browser.element('.WvMZr').should(have.text('Войти')).click()
 
-
     @allure.step('Вводим данные пользователя')
     def fill_user(self):
         self.fill_login.type(self.user.email).press_enter()
@@ -24,7 +23,7 @@ class LoginForm:
 
     @allure.step('Проверяем сообщение об ошибке авторизации')
     def should_error_message(self, message_error: str):
-        browser.element(by.text(message_error)).should(have.text(message_error))
+        browser.element(by.text(message_error)).should(be.visible).should(have.text(message_error))
         #assert message_error == 'Неверный пароль'
 
 
