@@ -10,7 +10,6 @@ class LoginForm:
         self.user = user
         self.fill_login = browser.element('[name="login"]')
         self.fill_password = browser.element('[name="passwd"]')
-        #self.message_error = browser.element('.Textinput-Hint Textinput-Hint_state_error')
 
     @allure.step('Click button Log_in')
     def click_button_log_in(self):

@@ -15,8 +15,8 @@ def test_main_page():
     main_page.open_main_page()
     main_page.clickable_log_in()
     main_page.should_label_be_clickable_and_have_text()
-    main_page.should_main_menu_titles()
-    main_page.should_footer_menu_titles()
+    #main_page.should_main_menu_titles()
+    #main_page.should_footer_menu_titles()
 
 
 

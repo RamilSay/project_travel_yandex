@@ -1,5 +1,5 @@
 import allure
-from selene import be, have, browser
+from selene import be, by, have, browser
 
 
 class MainPage:
@@ -9,12 +9,11 @@ class MainPage:
 
     @allure.step('Проверяем кликабельность кнопки Войти')
     def clickable_log_in(self):
-        browser.element('._44BiE').should(be.clickable)
+        browser.element('.WvMZr').should(be.clickable)
 
-    @allure.step('Проверяем лейбл Хабр')
+    @allure.step('Проверяем лейбл Путешествия')
     def should_label_be_clickable_and_have_text(self):
-        browser.element('.tm-header__logo-wrap').should(be.clickable)
-        browser.element('.tm-header__logo-wrap').should(have.text('Хабр'))
+        browser.element('/a').should(be.visible).should(have.text('Перейти на главную Яндекс Путешествий')).click()
 
     @allure.step('Проверяем верхнее меню')
     def should_main_menu_titles(self):

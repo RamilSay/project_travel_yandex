@@ -22,7 +22,7 @@ main_page = MainPage()
 @pytest.mark.ui
 @pytest.mark.user
 def test_incorrect_login():
-    page = LoginForm(user=User('', ''))
+    page = LoginForm(user=User('', 'test'))
     main_page.open_main_page()
     page.click_button_log_in()
     page.fill_user()
