@@ -1,16 +1,7 @@
 import os
-from data.user import User
-from dotenv import load_dotenv
-
-load_dotenv()
-"""
-import os
-import requests
 import pytest
 from dotenv import load_dotenv
-from data import user
 from data.user import User
-from ui_model.pages.login_form import LoginForm
 from utils import attach
 from selene import browser
 from selenium import webdriver
@@ -35,8 +26,8 @@ def browser_management(request):
     browser_version = request.config.getoption('--browser_version')
     browser.config.window_width = 1920
     browser.config.window_height = 1080
-    options = webdriver.ChromeOptions()
-    browser.config.driver_options = options
+    #options = webdriver.ChromeOptions()
+    #browser.config.driver_options = options
 
     options = Options()
     selenoid_capabilities = {
@@ -66,8 +57,6 @@ def browser_management(request):
     attach.add_video(browser)
 
     browser.quit()
-"""
-import pytest
 
 
 @pytest.fixture()
