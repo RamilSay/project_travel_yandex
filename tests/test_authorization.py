@@ -4,11 +4,11 @@ from allure_commons.types import Severity
 from selene import have, browser
 
 import config
+from data.user import User
 from ui_model.pages.login_form import LoginForm
 from ui_model.pages.main_page import MainPage
 
 main_page = MainPage()
-login_form = LoginForm()
 
 
 @allure.label('owner', 'ramilsay')
@@ -19,12 +19,12 @@ login_form = LoginForm()
 @allure.title('Authorization is impossible with incorrect login and password')
 @pytest.mark.ui
 @pytest.mark.user
-def test_incorrect_login(open_browser):
-
+def test_incorrect_login():
+    page = LoginForm(user=User('', ''))
     main_page.open_main_page()
-    login_form.click_button_log_in()
-    login_form.fill_user()
-    login_form.should_error_message('Неверный пароль')
+    page.click_button_log_in()
+    page.fill_user()
+    page.should_error_message(message_error='Неверный пароль')
 
 
 @allure.label('owner', 'ramilsay')
@@ -33,10 +33,11 @@ def test_incorrect_login(open_browser):
 @allure.severity(Severity.BLOCKER)
 @allure.epic('UI tests')
 @allure.title('Authorization with correct login and password')
-def test_login():
+def test_login(user_for_auth):
+    page = LoginForm(user_for_auth)
     main_page.open_main_page()
-    login_form.click_button_log_in()
-    login_form.fill_user()
+    page.click_button_log_in()
+    page.fill_user()
     #assert login_form.should_error_message() == 'Неверный пароль'
 
 #login_page = Login(

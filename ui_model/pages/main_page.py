@@ -5,7 +5,7 @@ from selene import be, have, browser
 class MainPage:
     @allure.step('Открываем главную страницу')
     def open_main_page(self):
-        browser.open('/')
+        browser.open('https://travel.yandex.ru/')
 
     @allure.step('Проверяем кликабельность кнопки Войти')
     def clickable_log_in(self):

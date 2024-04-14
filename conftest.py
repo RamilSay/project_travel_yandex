@@ -1,14 +1,26 @@
 import os
+from data.user import User
+from dotenv import load_dotenv
+
+load_dotenv()
+"""
+import os
 import requests
 import pytest
+from dotenv import load_dotenv
+from data import user
 from data.user import User
+from ui_model.pages.login_form import LoginForm
 from utils import attach
 from selene import browser
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+load_dotenv()
+
 DEFAULT_BROWSER_VERSION = '100'
 BASE_URL = 'https://travel.yandex.ru/'
+
 
 def pytest_addoption(parser):
     parser.addoption('--browser_name', help='Браузер для тестов',
@@ -37,8 +49,8 @@ def browser_management(request):
     }
     options.capabilities.update(selenoid_capabilities)
 
-    login = user.selenoid_auth()
-    password = config.SELENOID_PASSWORD
+    login = os.getenv('SELENOID_LOGIN')
+    password = os.getenv('SELENOID_PASSWORD')
 
     driver = webdriver.Remote(
         command_executor=f'https://{login}:{password}@selenoid.autotests.cloud/wd/hub',
@@ -54,3 +66,10 @@ def browser_management(request):
     attach.add_video(browser)
 
     browser.quit()
+"""
+import pytest
+
+
+@pytest.fixture()
+def user_for_auth():
+    return User(email=os.getenv('EMAIL'), password=os.getenv('PASSWORD'))
