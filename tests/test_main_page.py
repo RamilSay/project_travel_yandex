@@ -12,12 +12,9 @@ main_page = MainPage()
 @allure.severity(Severity.CRITICAL)
 @allure.title('Проверяем главную страницу')
 def test_main_page():
-    main_page.open_main_page()
+    main_page.open()
     main_page.clickable_log_in()
-    main_page.should_label_be_clickable_and_have_text()
-    #main_page.should_main_menu_titles()
-    #main_page.should_footer_menu_titles()
-
-
-
-
+    main_page.should_label_main_menu_be_clickable()
+    main_page.should_main_menu_correct()
+        # main_page.should_main_menu_titles()
+    # main_page.should_footer_menu_titles()

@@ -1,11 +1,14 @@
 import os
 import pytest
-from dotenv import load_dotenv
+
 from data.user import User
+"""
 from utils import attach
 from selene import browser
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+"""
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -18,7 +21,7 @@ def pytest_addoption(parser):
                      choices=['firefox', 'chrome'], default='chrome')
     parser.addoption('--browser_version', help='Версия браузера', default='100.0')
 
-
+"""
 @pytest.fixture(scope='function', autouse=True)
 def browser_management(request):
     browser.config.base_url = BASE_URL
@@ -57,6 +60,7 @@ def browser_management(request):
     attach.add_video(browser)
 
     browser.quit()
+"""
 
 
 @pytest.fixture()
