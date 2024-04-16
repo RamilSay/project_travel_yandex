@@ -14,10 +14,9 @@ main_page = MainPage()
 
 
 @allure.label('owner', 'ramilsay')
-@allure.tag('UI')
-@allure.feature('Authorization')
 @allure.severity(Severity.BLOCKER)
 @allure.epic('UI tests')
+@allure.feature('Authorization')
 @allure.title('Авторизация невозможна с некорректными логином и паролем')
 @pytest.mark.ui
 @pytest.mark.user
@@ -28,11 +27,11 @@ def test_incorrect_login():
     page.fill_user()
     page.should_error_message('Неверный пароль')
 
+
 @allure.label('owner', 'ramilsay')
-@allure.tag('UI')
-@allure.feature('Authorization')
 @allure.severity(Severity.BLOCKER)
 @allure.epic('UI tests')
+@allure.feature('Authorization')
 @allure.title('Авторизация с корректными логином и паролем')
 def test_login(user_for_auth):
     page = LoginForm(user_for_auth)
