@@ -11,6 +11,7 @@ class MainPage:
         self.find_field = browser.element('.w_eHd')
         self.submit = browser.element('[type="submit"]')
         self.url = Config().base_url
+        #self.first_day = int
 
 
     @allure.step('Открываем главную страницу')
@@ -31,11 +32,11 @@ class MainPage:
         assert response.status_code == 200, f'Статус код ответа {response.status_code}'
 
     @allure.step('Проверяем поле поиск')
-    def should_find_field_works(self, text):
+    def should_find_field_works(self, text, first_day, last_day):
         self.find_field.type(text)
         browser.element('[id="suggest-0"]').should(have.text(text)).click()
-        browser.element('(//span[contains(text(),"18")])[1]').click()
-        browser.element('(//span[contains(text(),"25")])[1]').click()
+        browser.element('(//span[contains(text(),f"{first_day}")])[1]').click()
+        browser.element(f'(//span[contains(text(),f"{last_day}")])[1]').click()
         self.submit.press_enter()
 
     @allure.step('Проверяем подвал сайта')
