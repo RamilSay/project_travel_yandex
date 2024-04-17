@@ -28,7 +28,8 @@ class LoginForm:
 
     @allure.step('Проверяем успешную авторизацию')
     def should_menu_user_show(self):
-        browser.element('._3Tq3s rr1aS w9whJ').should(have.text('Открыть меню пользователя')).click()
+        browser.element('(//span[@class="_1YbL5 Y0oJN N6eXh"])[1]').click()
+        browser.element('(//span[@class="BUBpx PwvPC i9Gsh"])[1]').should(have.text(self.user.first_name))
 
 
     # @allure.step('Вводим невалидные данные пользователя')

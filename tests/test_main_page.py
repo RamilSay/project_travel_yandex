@@ -1,4 +1,5 @@
 import time
+import pytest
 
 import allure
 from allure_commons.types import Severity
@@ -13,7 +14,8 @@ main_page = MainPage()
 @allure.epic('UI tests')
 @allure.tag('Main menu')
 @allure.title('Проверяем главную страницу')
-def test_main_page():
+@pytest.mark.parametrize('browser_management', ['firefox'], indirect=True)
+def test_main_page(browser_management):
     main_page.open()
     time.sleep(12)
     main_page.clickable_log_in()

@@ -1,17 +1,19 @@
 import os
 import pytest
+import config
 
 from data.user import User
-"""
+
 from utils import attach
 from selene import browser
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-"""
+
 from dotenv import load_dotenv
 
 load_dotenv()
 
+DEFAULT_BROWSER = 'chrome'
 DEFAULT_BROWSER_VERSION = '100'
 BASE_URL = 'https://travel.yandex.ru/'
 
@@ -21,18 +23,36 @@ def pytest_addoption(parser):
                      choices=['firefox', 'chrome'], default='chrome')
     parser.addoption('--browser_version', help='Версия браузера', default='100.0')
 
+
 """
+@pytest.fixture(scope="session", autouse=True)
+def browser_setup():
+    browser.config.timeout = 5.0
+    browser.config.window_width = 1920
+    browser.config.window_height = 1080
+
+    yield
+
+    browser.quit()
+"""
+
+
 @pytest.fixture(scope='function', autouse=True)
 def browser_management(request):
     browser.config.base_url = BASE_URL
+    browser.config.driver_name = config.settings.browser_name \
+        if config.settings.browser_name else DEFAULT_BROWSER
+    browser.config.version = config.settings.browser_version \
+        if config.settings.browser_version else DEFAULT_BROWSER_VERSION
     browser_name = request.config.getoption('--browser_name')
     browser_version = request.config.getoption('--browser_version')
     browser.config.window_width = 1920
     browser.config.window_height = 1080
-    options = webdriver.ChromeOptions()
+
+    options = webdriver.ChromeOptions() if browser.config.driver_name == 'chrome' \
+        else webdriver.FirefoxOptions()
     browser.config.driver_options = options
 
-    options = Options()
     selenoid_capabilities = {
         'browserName': f'{browser_name}',
         'browserVersion': f'{browser_version}',
@@ -60,7 +80,6 @@ def browser_management(request):
     attach.add_video(browser)
 
     browser.quit()
-"""
 
 
 @pytest.fixture()

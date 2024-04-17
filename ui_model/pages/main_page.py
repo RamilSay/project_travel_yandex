@@ -1,7 +1,7 @@
 import allure
 from selene import be, by, have, browser
 import requests
-from config import Config
+from config import Settings
 
 
 class MainPage:
@@ -10,7 +10,7 @@ class MainPage:
         self.label_main_menu = browser.element('.hE6MR')
         self.find_field = browser.element('.w_eHd')
         self.submit = browser.element('[type="submit"]')
-        self.url = Config().base_url
+        self.url = Settings().base_url
 
 
     @allure.step('Открываем главную страницу')
