@@ -19,7 +19,7 @@ def test_main_page():
     main_page.clickable_log_in()
     main_page.should_label_main_menu_be_clickable()
     main_page.should_main_menu_correct()
-    main_page.should_find_field_works('Москва')
+    main_page.should_find_field_works('Москва', 22, 28)
     time.sleep(7)
 
 

@@ -13,7 +13,7 @@ class LoginForm:
         self.fill_password = browser.element('[name="passwd"]')
         self.button_log_in = MainPage().button_log_in
 
-    @allure.step('Click button Log_in')
+    @allure.step('Нажимаем на кнопку Войти')
     def click_button_log_in(self):
         self.button_log_in.should(have.text('Войти')).click()
 
@@ -26,6 +26,9 @@ class LoginForm:
     def should_error_message(self, message_error: str):
         browser.element(by.text(message_error)).should(be.visible).should(have.text(message_error))
 
+    @allure.step('Проверяем успешную авторизацию')
+    def should_menu_user_show(self):
+        browser.element('._3Tq3s rr1aS w9whJ').should(have.text('Открыть меню пользователя')).click()
 
 
     # @allure.step('Вводим невалидные данные пользователя')
