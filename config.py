@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     hold_driver_at_exit: bool = False
     headless: bool = False
     timeout: float = 5.0
-    envtype: Literal['local', 'remote'] = 'local'
+    environment: Literal['local', 'remote'] = 'local'
     driver_remote_url: str = ''
 
 

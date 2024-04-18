@@ -40,28 +40,32 @@ def browser_setup():
 @pytest.fixture(scope='function', autouse=True)
 def browser_management(request):
     browser.config.base_url = BASE_URL
-    browser.config.driver_name = config.settings.browser_name \
-        if config.settings.browser_name else DEFAULT_BROWSER
-    browser.config.version = config.settings.browser_version \
-        if config.settings.browser_version else DEFAULT_BROWSER_VERSION
-    browser_name = request.config.getoption('--browser_name')
-    browser_version = request.config.getoption('--browser_version')
-    browser.config.window_width = 1920
-    browser.config.window_height = 1080
+    if config.settings.environment == 'local':
+        browser.config.window_width = 1920
+        browser.config.window_height = 1080
+
+        browser.config.driver_name = config.settings.browser_name \
+            if config.settings.browser_name else DEFAULT_BROWSER
+        browser.config.version = config.settings.browser_version \
+            if config.settings.browser_version else DEFAULT_BROWSER_VERSION
 
     options = webdriver.ChromeOptions() if browser.config.driver_name == 'chrome' \
         else webdriver.FirefoxOptions()
-    browser.config.driver_options = options
 
-    selenoid_capabilities = {
-        'browserName': f'{browser_name}',
-        'browserVersion': f'{browser_version}',
-        'selenoid:options': {
-            'enableVNC': True,
-            'enableVideo': True
+    browser.config.driver_options = options
+    browser_name = request.config.getoption('--browser_name')
+    browser_version = request.config.getoption('--browser_version')
+
+    if config.settings.environment == 'remote':
+        selenoid_capabilities = {
+            'browserName': f'{browser_name}',
+            'browserVersion': f'{browser_version}',
+            'selenoid:options': {
+                'enableVNC': True,
+                'enableVideo': True
+            }
         }
-    }
-    options.capabilities.update(selenoid_capabilities)
+        options.capabilities.update(selenoid_capabilities)
 
     login = os.getenv('SELENOID_LOGIN')
     password = os.getenv('SELENOID_PASSWORD')
