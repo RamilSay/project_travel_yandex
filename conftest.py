@@ -38,7 +38,7 @@ def browser_setup():
 
 
 @pytest.fixture(scope='function', autouse=True)
-def browser_management(request):
+def browser_management():
     browser.config.base_url = BASE_URL
     if config.settings.environment == 'local':
         browser.config.window_width = 1920
@@ -53,6 +53,8 @@ def browser_management(request):
         else webdriver.FirefoxOptions()
 
     browser.config.driver_options = options
+    options = Options()
+    """
     browser_name = request.config.getoption('--browser_name')
     browser_version = request.config.getoption('--browser_version')
 
@@ -75,7 +77,7 @@ def browser_management(request):
         options=options
     )
     browser.config.driver = driver
-
+    """
     yield
 
     attach.add_screenshot(browser)

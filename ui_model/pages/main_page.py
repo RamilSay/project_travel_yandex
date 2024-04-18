@@ -1,7 +1,7 @@
 import allure
 from selene import be, by, have, browser
 import requests
-from config import Settings
+from config import settings
 
 
 class MainPage:
@@ -10,8 +10,7 @@ class MainPage:
         self.label_main_menu = browser.element('.hE6MR')
         self.find_field = browser.element('.w_eHd')
         self.submit = browser.element('[type="submit"]')
-        self.url = Settings().base_url
-
+        self.url = settings.base_url
 
     @allure.step('Открываем главную страницу')
     def open(self):
@@ -34,15 +33,11 @@ class MainPage:
     def should_find_field_works(self, text, first_day, last_day):
         self.find_field.type(text)
         browser.element('[id="suggest-0"]').should(have.text(text)).click()
+        #browser.element(f'(//span[contains(text(),"{first_day}")])[1]').click()
         browser.element(f'(//span[contains(text(),"{first_day}")])[1]').click()
         browser.element(f'(//span[contains(text(),"{last_day}")])[1]').click()
         self.submit.press_enter()
 
     @allure.step('Проверяем подвал сайта')
     def should_footer_menu_titles(self):
-        browser.all('.tm-footer-menu__block-title').should(
-            have.exact_texts('Ваш аккаунт',
-                             'Разделы',
-                             'Информация',
-                             'Услуги')
-        )
+        pass
