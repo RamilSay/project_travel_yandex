@@ -7,7 +7,7 @@ from data.user import User
 from utils import attach
 from selene import browser
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver import ChromeOptions, FirefoxOptions
 
 from dotenv import load_dotenv
 
@@ -16,6 +16,11 @@ load_dotenv()
 DEFAULT_BROWSER = 'chrome'
 DEFAULT_BROWSER_VERSION = '100'
 BASE_URL = 'https://travel.yandex.ru/'
+
+
+@pytest.fixture()
+def user_for_auth():
+    return User(email=os.getenv('EMAIL'), password=os.getenv('PASSWORD'))
 
 
 def pytest_addoption(parser):
@@ -38,7 +43,7 @@ def browser_setup():
 
 
 @pytest.fixture(scope='function', autouse=True)
-def browser_management():
+def browser_management(request):
     browser.config.base_url = BASE_URL
     if config.settings.environment == 'local':
         browser.config.window_width = 1920
@@ -49,12 +54,11 @@ def browser_management():
         browser.config.version = config.settings.browser_version \
             if config.settings.browser_version else DEFAULT_BROWSER_VERSION
 
-    options = webdriver.ChromeOptions() if browser.config.driver_name == 'chrome' \
-        else webdriver.FirefoxOptions()
+    options = ChromeOptions() if browser.config.driver_name == 'chrome' \
+        else FirefoxOptions()
 
     browser.config.driver_options = options
-    options = Options()
-    """
+
     browser_name = request.config.getoption('--browser_name')
     browser_version = request.config.getoption('--browser_version')
 
@@ -69,15 +73,15 @@ def browser_management():
         }
         options.capabilities.update(selenoid_capabilities)
 
-    login = os.getenv('SELENOID_LOGIN')
-    password = os.getenv('SELENOID_PASSWORD')
+        login = os.getenv('SELENOID_LOGIN')
+        password = os.getenv('SELENOID_PASSWORD')
 
-    driver = webdriver.Remote(
-        command_executor=f'https://{login}:{password}@selenoid.autotests.cloud/wd/hub',
-        options=options
-    )
-    browser.config.driver = driver
-    """
+        driver = webdriver.Remote(
+            command_executor=f'https://{login}:{password}@selenoid.autotests.cloud/wd/hub',
+            options=options
+        )
+        browser.config.driver = driver
+
     yield
 
     attach.add_screenshot(browser)
@@ -88,6 +92,6 @@ def browser_management():
     browser.quit()
 
 
-@pytest.fixture()
-def user_for_auth():
-    return User(email=os.getenv('EMAIL'), password=os.getenv('PASSWORD'))
+
+
+
