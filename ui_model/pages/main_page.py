@@ -33,7 +33,6 @@ class MainPage:
     def should_find_field_works(self, text, first_day, last_day):
         self.find_field.type(text)
         browser.element('[id="suggest-0"]').should(have.text(text)).click()
-        #browser.element(f'(//span[contains(text(),"{first_day}")])[1]').click()
         browser.element(f'(//span[contains(text(),"{first_day}")])[1]').click()
         browser.element(f'(//span[contains(text(),"{last_day}")])[1]').click()
         self.submit.press_enter()
