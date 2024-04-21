@@ -57,4 +57,4 @@ python -m pytest
 ![image](https://github.com/RamilSay/project_travel_yandex.git/design/)
 ### Видео запуска теста
 Браузеры запускаются удаленно на Selenide
-![Watch the video](design/gif/test_video_example.gif)
+![Watch the video](design/gif/test_video.gif)
