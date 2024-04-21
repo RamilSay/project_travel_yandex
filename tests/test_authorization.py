@@ -21,7 +21,7 @@ main_page = MainPage()
 @pytest.mark.ui
 @pytest.mark.test_user
 @pytest.mark.parametrize('browser_management', ['firefox'], indirect=True)
-def test_incorrect_login():
+def test_incorrect_login(browser_management):
     page = LoginForm(user=User('', 'test'))
     main_page.open()
     page.click_button_log_in()
@@ -37,12 +37,13 @@ def test_incorrect_login():
 @pytest.mark.ui
 @pytest.mark.user
 @pytest.mark.parametrize('browser_management', ['chrome'], indirect=True)
-def test_login(user_for_auth):
+def test_login(browser_management, user_for_auth):
     page = LoginForm(user_for_auth)
     main_page.open()
+    time.sleep(15)
     page.click_button_log_in()
     page.fill_user()
-    time.sleep(10)
     page.should_menu_user_show()
+    page.should_main_menu_show()
     time.sleep(10)
 

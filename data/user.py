@@ -13,3 +13,4 @@ class User:
         self.first_name = os.getenv('NAME')
         self.email = os.getenv('EMAIL') if email else 'test'
         self.password = os.getenv('PASSWORD') if password else 'test'
+        self.token = ''

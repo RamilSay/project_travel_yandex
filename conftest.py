@@ -18,11 +18,6 @@ DEFAULT_BROWSER_VERSION = '100'
 BASE_URL = 'https://travel.yandex.ru/'
 
 
-@pytest.fixture()
-def user_for_auth():
-    return User(email=os.getenv('EMAIL'), password=os.getenv('PASSWORD'))
-
-
 def pytest_addoption(parser):
     parser.addoption('--browser_name', help='Браузер для тестов',
                      choices=['firefox', 'chrome'], default='chrome')
@@ -92,6 +87,6 @@ def browser_management(request):
     browser.quit()
 
 
-
-
-
+@pytest.fixture()
+def user_for_auth():
+    return User(email=os.getenv('EMAIL'), password=os.getenv('PASSWORD'))

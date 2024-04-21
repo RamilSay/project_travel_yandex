@@ -5,13 +5,15 @@ from selene import be, by, have, browser
 from data.user import User
 from ui_model.pages.main_page import MainPage
 
+main_page = MainPage()
+
 
 class LoginForm:
     def __init__(self, user: User):
         self.user = user
         self.fill_login = browser.element('[name="login"]')
         self.fill_password = browser.element('[name="passwd"]')
-        self.button_log_in = MainPage().button_log_in
+        self.button_log_in = main_page.button_log_in
 
     @allure.step('Нажимаем на кнопку Войти')
     def click_button_log_in(self):
@@ -31,8 +33,8 @@ class LoginForm:
         browser.element('(//span[@class="_1YbL5 Y0oJN N6eXh"])[1]').click()
         browser.element('(//span[@class="BUBpx PwvPC i9Gsh"])[1]').should(have.text(self.user.first_name))
 
+    @allure.step('Проверяем, что находимся на главной странице')
+    def should_main_menu_show(self):
+        assert main_page.url == 'https://travel.yandex.ru/'
 
-    # @allure.step('Вводим невалидные данные пользователя')
-    # fill_user()
 
-    # @allure.step('Нажимаем кнопку')
