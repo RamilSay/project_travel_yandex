@@ -58,3 +58,4 @@ python -m pytest
 ### Видео запуска теста
 Браузеры запускаются удаленно на Selenide
 ![Watch the video](design/gif/test_video.gif)
+
