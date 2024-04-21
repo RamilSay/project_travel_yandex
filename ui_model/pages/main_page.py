@@ -7,6 +7,7 @@ from config import settings
 class MainPage:
     def __init__(self):
         self.button_log_in = browser.element('.WvMZr')
+        self.button_log_out = browser.element('//span[contains(text(),"Выйти")]')
         self.label_main_menu = browser.element('.hE6MR')
         self.find_field = browser.element('.w_eHd')
         self.submit = browser.element('[type="submit"]')
@@ -29,12 +30,12 @@ class MainPage:
         response = requests.request('get', self.url)
         assert response.status_code == 200, f'Статус код ответа {response.status_code}'
 
-    @allure.step('Проверяем поле поиск')
+    @allure.step('Заполняем поля ввода поиска')
     def should_find_field_works(self, text, first_day, last_day):
         self.find_field.type(text)
         browser.element('[id="suggest-0"]').should(have.text(text)).click()
         browser.element(f'(//span[contains(text(),"{first_day}")])[1]').click()
-        browser.element(f'(//span[contains(text(),"{last_day}")])[1]').click()
+        browser.element(f'(//span[contains(text(),"{last_day}")])[2]').click()
         self.submit.press_enter()
 
     @allure.step('Проверяем подвал сайта')

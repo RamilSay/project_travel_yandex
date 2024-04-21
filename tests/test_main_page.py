@@ -14,7 +14,7 @@ main_page = MainPage()
 @allure.epic('UI tests')
 @allure.tag('Main menu')
 @allure.title('Проверяем главную страницу')
-@pytest.mark.parametrize('browser_management', ['firefox'], indirect=True)
+@pytest.mark.parametrize('browser_management', ['chrome'], indirect=True)
 def test_main_page(browser_management):
     main_page.open()
     time.sleep(12)

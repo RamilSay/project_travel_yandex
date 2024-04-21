@@ -14,6 +14,7 @@ class LoginForm:
         self.fill_login = browser.element('[name="login"]')
         self.fill_password = browser.element('[name="passwd"]')
         self.button_log_in = main_page.button_log_in
+        self.button_log_out = main_page.button_log_out
 
     @allure.step('Нажимаем на кнопку Войти')
     def click_button_log_in(self):
@@ -37,4 +38,7 @@ class LoginForm:
     def should_main_menu_show(self):
         assert main_page.url == 'https://travel.yandex.ru/'
 
-
+    @allure.step('Нажимаем на кнопку Выйти')
+    def click_button_log_out(self):
+        self.button_log_out.should(have.text('Выйти')).click()
+        self.button_log_in.should(have.text('Войти'))
