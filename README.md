@@ -41,11 +41,8 @@ PASSWORD = 'any_password'
 ```
 python -m pytest
 ```
-## Отчеты
+## Allure отчеты
 
-### Allure-отчет
-
-![image](https://github.com/RamilSay/project_travel_yandex.git/design/)
-![image](https://github.com/RamilSay/project_travel_yandex.git/design/)
-![image](https://github.com/RamilSay/project_travel_yandex.git/design/)
-
+![image](https://github.com/RamilSay/project_travel_yandex.git/design/allure_ui_tests_#1_authorization.png)
+![image](https://github.com/RamilSay/project_travel_yandex.git/design/allure_ui_tests_#2_authorization.png)
+![image](https://github.com/RamilSay/project_travel_yandex.git/design/allure_ui_tests_#3_main_menu.png)
