@@ -42,6 +42,6 @@ PASSWORD = 'any_password'
 python -m pytest
 ```
 ## Allure отчеты
-![image](design/images/allure_report_1.png)
-![image](design/images/allure_report_2.png)
-![image](design/images/allure_report_3.png)
+![image](design/images/allure_report1.png)
+![image](design/images/allure_report2.png)
+![image](design/images/allure_report3.png)
