@@ -42,19 +42,10 @@ SELENE_PASSWORD = 1234
 ```
 python -m pytest
 ```
-### Удаленный запуск проекта в Jenkins
-Проект доступен по [ссылке](https://jenkins.autotests.cloud/job/C07-ramilsay-project_travel_yandex/), сборка и просмотр отчетов доступна для неавторизованных пользователей.
-1. Открыть проект в Jenkins
-2. Нажать "Собрать с параметрами"
-<details><summary>screenshot</summary><img src=https://github.com/RamilSay/project_travel_yandex.git/design/icons/name></details>
-
 ## Отчеты
 
 ### Allure-отчет
-Доступен по [ссылке](https://jenkins.autotests.cloud/job/C07-ramilsay-project_travel_yandex/16/allure/)
+
 ![image](https://github.com/RamilSay/project_travel_yandex.git/design/)
 ![image](https://github.com/RamilSay/project_travel_yandex.git/design/)
 ![image](https://github.com/RamilSay/project_travel_yandex.git/design/)
-### Видео запуска теста
-Браузеры запускаются удаленно на Selenide
-![Watch the video](design/gif/test_video.gif)
