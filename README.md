@@ -35,6 +35,7 @@ pip install -r requirements.txt
 NAME = 'any_name'
 EMAIL = 'any_email'
 PASSWORD = 'any_password'
+
 ```
 7. Запустить тесты
 ```
@@ -43,7 +44,7 @@ python -m pytest
 ## Отчеты
 
 ### Allure-отчет
-Доступен по [ссылке](https://jenkins.autotests.cloud/job/C07-ramilsay-project_travel_yandex/16/allure/)
+
 ![image](https://github.com/RamilSay/project_travel_yandex.git/design/)
 ![image](https://github.com/RamilSay/project_travel_yandex.git/design/)
 ![image](https://github.com/RamilSay/project_travel_yandex.git/design/)
