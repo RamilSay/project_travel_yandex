@@ -35,8 +35,7 @@ pip install -r requirements.txt
 NAME = 'any_name'
 EMAIL = 'any_email'
 PASSWORD = 'any_password'
-SELENOID_LOGIN = 'user1'
-SELENE_PASSWORD = 1234
+
 ```
 7. Запустить тесты
 ```
