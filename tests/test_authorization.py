@@ -12,8 +12,8 @@ main_page = MainPage()
 
 @allure.label('owner', 'ramilsay')
 @allure.severity(Severity.BLOCKER)
-@allure.epic('UI tests')
-@allure.feature('Authorization')
+@allure.epic('UI тесты')
+@allure.feature('Авторизация')
 @allure.title('Авторизация невозможна с некорректными логином и паролем')
 @pytest.mark.ui
 @pytest.mark.test_user
@@ -28,8 +28,8 @@ def test_incorrect_login(browser_management):
 
 @allure.label('owner', 'ramilsay')
 @allure.severity(Severity.BLOCKER)
-@allure.epic('UI tests')
-@allure.feature('Authorization')
+@allure.epic('UI тесты')
+@allure.feature('Авторизация')
 @allure.title('Авторизация с корректными логином и паролем')
 @pytest.mark.ui
 @pytest.mark.user

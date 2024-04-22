@@ -11,8 +11,9 @@ main_page = MainPage()
 
 @allure.label('owner', 'ramilsay')
 @allure.severity(Severity.CRITICAL)
-@allure.epic('UI tests')
-@allure.tag('Main menu')
+@allure.epic('UI тесты')
+@allure.tag('Главное меню')
+@allure.feature('Главное меню')
 @allure.title('Проверяем главную страницу')
 @pytest.mark.parametrize('browser_management', ['chrome'], indirect=True)
 def test_main_page(browser_management):
