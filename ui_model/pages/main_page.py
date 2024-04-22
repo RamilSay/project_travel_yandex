@@ -35,7 +35,7 @@ class MainPage:
         self.find_field.type(text)
         browser.element('[id="suggest-0"]').should(have.text(text)).click()
         browser.element(f'(//span[contains(text(),"{first_day}")])[1]').click()
-        browser.element(f'(//span[contains(text(),"{last_day}")])[2]').click()
+        browser.element(f'(//div)[242]//span[contains(text(),"{last_day}")]').click()
         self.submit.press_enter()
 
     @allure.step('Проверяем подвал сайта')
