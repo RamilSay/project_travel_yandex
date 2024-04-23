@@ -43,19 +43,21 @@ def browser_setup():
 @pytest.fixture(scope='function', autouse=True)
 def browser_management(request):
     browser.config.base_url = BASE_URL
-    if config.settings.environment == 'local':
-        browser.config.window_width = 1920
-        browser.config.window_height = 1080
-
-        browser.config.driver_name = config.settings.browser_name \
-            if config.settings.browser_name else DEFAULT_BROWSER
-        browser.config.version = config.settings.browser_version \
-            if config.settings.browser_version else DEFAULT_BROWSER_VERSION
-
+    browser.config.window_width = 1920
+    browser.config.window_height = 1080
+    #if config.settings.environment == 'local':
+    #
+    #
+    #
+    #    browser.config.driver_name = config.settings.browser_name \
+    #        if config.settings.browser_name else DEFAULT_BROWSER
+    #    browser.config.version = config.settings.browser_version \
+    #        if config.settings.browser_version else DEFAULT_BROWSER_VERSION
+    #
     options = ChromeOptions() if browser.config.driver_name == 'chrome' \
-        else FirefoxOptions()
-
-    browser.config.driver_options = options
+    #    else FirefoxOptions()
+    #
+    #browser.config.driver_options = options
 
     browser_name = request.config.getoption('--browser_name')
     browser_version = request.config.getoption('--browser_version')
