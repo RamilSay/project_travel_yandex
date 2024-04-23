@@ -11,11 +11,14 @@ from selenium.webdriver import ChromeOptions, FirefoxOptions
 
 from dotenv import load_dotenv
 
-load_dotenv()
-
 DEFAULT_BROWSER = 'chrome'
 DEFAULT_BROWSER_VERSION = '100'
 BASE_URL = 'https://travel.yandex.ru/'
+
+
+@pytest.fixture(scope='session', autouse=True)
+def load_env():
+    load_dotenv()
 
 
 def pytest_addoption(parser):
