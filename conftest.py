@@ -55,7 +55,7 @@ def browser_management(request):
     #        if config.settings.browser_version else DEFAULT_BROWSER_VERSION
     #
     options = ChromeOptions() if browser.config.driver_name == 'chrome' \
-    #    else FirefoxOptions()
+        else FirefoxOptions()
     #
     #browser.config.driver_options = options
 
