@@ -27,37 +27,22 @@ def pytest_addoption(parser):
     parser.addoption('--browser_version', help='Версия браузера', default='100.0')
 
 
-"""
-@pytest.fixture(scope="session", autouse=True)
-def browser_setup():
-    browser.config.timeout = 5.0
-    browser.config.window_width = 1920
-    browser.config.window_height = 1080
-
-    yield
-
-    browser.quit()
-"""
-
-
 @pytest.fixture(scope='function', autouse=True)
 def browser_management(request):
     browser.config.base_url = BASE_URL
     browser.config.window_width = 1920
     browser.config.window_height = 1080
-    #if config.settings.environment == 'local':
-    #
-    #
-    #
-    #    browser.config.driver_name = config.settings.browser_name \
-    #        if config.settings.browser_name else DEFAULT_BROWSER
-    #    browser.config.version = config.settings.browser_version \
-    #        if config.settings.browser_version else DEFAULT_BROWSER_VERSION
-    #
+
+    if config.settings.environment == 'local':
+        browser.config.driver_name = config.settings.browser_name \
+            if config.settings.browser_name else DEFAULT_BROWSER
+        browser.config.version = config.settings.browser_version \
+            if config.settings.browser_version else DEFAULT_BROWSER_VERSION
+
     options = ChromeOptions() if browser.config.driver_name == 'chrome' \
         else FirefoxOptions()
-    #
-    #browser.config.driver_options = options
+
+    browser.config.driver_options = options
 
     browser_name = request.config.getoption('--browser_name')
     browser_version = request.config.getoption('--browser_version')
